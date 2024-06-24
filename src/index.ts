@@ -11,7 +11,7 @@ const PORT = process.env.PORT;
 
 app.get("/ariel", (_, res) => {
   console.log("perro putisima");
-  res.send("pong");
+  res.send(`pong ${PORT}`);
 });
 
 app.use("/api/addTracer", tracerRouter);

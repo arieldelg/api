@@ -1,6 +1,6 @@
 import { TracerPost } from "../../../services/tracerServices";
 import { client } from "../db";
-import { SaveTracer } from "../../../type";
+import { SaveTracer } from "../../../types/type";
 
 const saveTracer = async (props: TracerPost) => {
   try {

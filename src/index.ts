@@ -9,6 +9,10 @@ app.use(cors());
 
 const PORT = process.env.PORT;
 
+process.on("uncaughtException", function (err) {
+  console.log(err);
+});
+
 app.get("/ariel", (_, res) => {
   console.log("perro putisima");
   res.send(`pong ${PORT}`);

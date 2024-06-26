@@ -1,6 +1,5 @@
-import { TracerPost } from "../../../services/tracerServices";
 import { client } from "../db";
-import { SaveTracer } from "../../../types/type";
+import { SaveTracer, TracerPost } from "../../../types/type";
 
 const saveTracer = async (props: TracerPost) => {
   try {
@@ -21,6 +20,7 @@ const saveTracer = async (props: TracerPost) => {
       title: props.title,
       priority: props.priority,
       text: props.text,
+      complete: props.complete,
       dateCreated: newFormatDate,
       dateUpdated: newFormatDate,
       owner: "Ariel",

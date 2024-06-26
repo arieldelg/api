@@ -1,10 +1,5 @@
 import { saveTracer } from "../lib/mongodb/post-tracer/saveTracer";
-
-export type TracerPost = {
-  title: string;
-  priority: string;
-  text: string;
-};
+import { TracerPost } from "../types/type";
 
 export const tracer = {
   postTracer: (props: TracerPost) => saveTracer(props),

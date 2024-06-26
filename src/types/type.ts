@@ -2,6 +2,7 @@ export type SaveTracer = {
   title: string;
   priority: string;
   text: string;
+  complete: boolean;
   dateCreated: string;
   dateUpdated: string;
   owner: string;
@@ -15,4 +16,11 @@ export type Sort = {
   high: GetTracer[];
   medium: GetTracer[];
   low: GetTracer[];
+};
+
+export type TracerPost = {
+  title: string;
+  priority: string;
+  text: string;
+  complete: boolean;
 };

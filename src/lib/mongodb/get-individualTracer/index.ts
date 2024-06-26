@@ -30,20 +30,31 @@ const tracerById = async (props: string) => {
 };
 
 const updateTracerById = async (id: string, props: Props) => {
+  // ! caching id prom props
   const filter = { _id: new ObjectId(id) };
-  const minutes = new Date().getMinutes();
-  const hour = new Date().getHours();
-  const day = new Date().getDate();
-  const month = new Date().getMonth();
-  const year = new Date().getFullYear();
+  // ! Date
+  const dateNow = new Date();
+  const minutes = dateNow.getMinutes();
+  const hour = dateNow.getHours();
+  const day = dateNow.getDate();
+  const month = dateNow.getMonth();
+  const year = dateNow.getFullYear();
 
+  //! Cheking if minutes is a number between 1 and 9
+  let newMinutes: number | string = "";
+  if (minutes <= 9) {
+    newMinutes = `0${day}`;
+  } else {
+    newMinutes = day;
+  }
+  // ! object to update
   const updateTracer = {
     $set: {
       complete: props.complete,
       text: props.text,
       title: props.title,
       priority: props.priority,
-      dateUpdated: `${day}/${month}/${year} - ${hour}:${minutes}/hrs`,
+      dateUpdated: `${day}/${month}/${year} - ${hour}:${newMinutes}/hrs`,
     },
   };
   try {

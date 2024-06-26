@@ -10,10 +10,21 @@ const saveTracer = async (props: TracerPost) => {
 
     // ! Date
     const dateNow = new Date();
+    const minutes = dateNow.getMinutes();
+    const hour = dateNow.getHours();
     const day = dateNow.getDate();
     const month = dateNow.getMonth();
     const year = dateNow.getFullYear();
-    const newFormatDate = `${day}/${month}/${year}`;
+
+    //! Cheking if minutes is a number between 1 and 9
+    let newMinutes: number | string = "";
+    if (minutes <= 9) {
+      newMinutes = `0${day}`;
+    } else {
+      newMinutes = day;
+    }
+
+    const newFormatDate = `${day}/${month}/${year} - ${hour}:${newMinutes}/hrs`;
 
     // ! execute query
     const data = await collection.insertOne({

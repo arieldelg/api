@@ -41,12 +41,13 @@ const updateTracerById = async (id: string, props: Props) => {
   const year = dateNow.getFullYear();
 
   //! Cheking if minutes is a number between 1 and 9
-  let newMinutes: number | string = "";
+  let date: string;
   if (minutes <= 9) {
-    newMinutes = `0${day}`;
+    date = `${day}/${month}/${year} - ${hour}:0${minutes}/hrs`;
   } else {
-    newMinutes = day;
+    date = `${day}/${month}/${year} - ${hour}:${minutes}/hrs`;
   }
+
   // ! object to update
   const updateTracer = {
     $set: {
@@ -54,7 +55,7 @@ const updateTracerById = async (id: string, props: Props) => {
       text: props.text,
       title: props.title,
       priority: props.priority,
-      dateUpdated: `${day}/${month}/${year} - ${hour}:${newMinutes}/hrs`,
+      dateUpdated: date,
     },
   };
   try {

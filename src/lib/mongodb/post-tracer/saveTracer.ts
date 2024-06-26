@@ -17,14 +17,12 @@ const saveTracer = async (props: TracerPost) => {
     const year = dateNow.getFullYear();
 
     //! Cheking if minutes is a number between 1 and 9
-    let newMinutes: number | string = "";
+    let date: string;
     if (minutes <= 9) {
-      newMinutes = `0${day}`;
+      date = `${day}/${month}/${year} - ${hour}:0${minutes}/hrs`;
     } else {
-      newMinutes = day;
+      date = `${day}/${month}/${year} - ${hour}:${minutes}/hrs`;
     }
-
-    const newFormatDate = `${day}/${month}/${year} - ${hour}:${newMinutes}/hrs`;
 
     // ! execute query
     const data = await collection.insertOne({
@@ -32,8 +30,8 @@ const saveTracer = async (props: TracerPost) => {
       priority: props.priority,
       text: props.text,
       complete: props.complete,
-      dateCreated: newFormatDate,
-      dateUpdated: newFormatDate,
+      dateCreated: date,
+      dateUpdated: date,
       owner: "Ariel",
     });
 

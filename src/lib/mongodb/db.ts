@@ -11,7 +11,6 @@ export const client = new MongoClient(url, {
     strict: true,
     deprecationErrors: true,
   },
-  tls: true,
 });
 
 // async function run() {

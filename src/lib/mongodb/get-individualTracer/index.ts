@@ -22,8 +22,6 @@ const tracerById = async (props: string) => {
     const collection = database.collection("tracers");
     const data = await collection.aggregate(agg).toArray();
     return data;
-  } catch (error) {
-    throw error;
   } finally {
     await client.close();
   }
@@ -64,8 +62,8 @@ const updateTracerById = async (id: string, props: Props) => {
     const collection = database.collection("tracers");
     const data = await collection.updateOne(filter, updateTracer);
     return data;
-  } catch (error) {
-    return error;
+  } finally {
+    await client.close();
   }
 };
 
@@ -78,8 +76,8 @@ const deleteTracerById = async (id: string) => {
     const collection = database.collection("tracers");
     const data = await collection.deleteOne(filter);
     return data;
-  } catch (error) {
-    return error;
+  } finally {
+    await client.close();
   }
 };
 

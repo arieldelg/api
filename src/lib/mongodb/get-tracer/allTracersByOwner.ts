@@ -1,14 +1,21 @@
 import { client } from "../db";
 
-const agg = [
-  {
-    $match: {
-      owner: "Ariel",
-    },
-  },
-];
-
 const allTracersByOwner = async () => {
+  const agg = [
+    {
+      $match: {
+        owner: "Ariel",
+      },
+    },
+    {
+      $group: {
+        _id: "$priority",
+        tracer: {
+          $push: "$$ROOT",
+        },
+      },
+    },
+  ];
   try {
     // ! conect to database and then collection
     await client.connect();
@@ -18,12 +25,9 @@ const allTracersByOwner = async () => {
     // ! execute query
     const data = await collection.aggregate(agg).toArray();
 
-    console.log(data);
     return data;
-  } catch (error) {
-    throw error;
   } finally {
-    await client.close();
+    // await client.close();
   }
 };
 

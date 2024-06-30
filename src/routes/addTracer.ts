@@ -4,7 +4,8 @@ import { allTracersByOwner } from "../lib/mongodb/get-tracer/allTracersByOwner";
 
 const router = express.Router();
 
-router.get("/", async (_, res) => {
+router.get("/", async (req, res) => {
+  console.log(req.params);
   const data = await allTracersByOwner();
   res.send(data);
 });

@@ -9,20 +9,11 @@ const saveTracer = async (props: TracerPost) => {
     const collection = database.collection<SaveTracer>("tracers");
 
     // ! Date
+    const timeStamp = new Date().toLocaleString();
     const dateNow = new Date();
-    const minutes = dateNow.getMinutes();
-    const hour = dateNow.getHours();
     const day = dateNow.getDate();
     const month = dateNow.getMonth();
     const year = dateNow.getFullYear();
-
-    //! Cheking if minutes is a number between 1 and 9
-    let date: string;
-    if (minutes <= 9) {
-      date = `${day}/${month}/${year} - ${hour}:0${minutes}/hrs`;
-    } else {
-      date = `${day}/${month}/${year} - ${hour}:${minutes}/hrs`;
-    }
 
     // ! execute query
     const data = await collection.insertOne({
@@ -30,8 +21,13 @@ const saveTracer = async (props: TracerPost) => {
       priority: props.priority,
       text: props.text,
       complete: props.complete,
-      dateCreated: date,
-      dateUpdated: date,
+      dateCreated: timeStamp,
+      dateUpdated: timeStamp,
+      objectDay: {
+        year: year,
+        month: month,
+        day: day,
+      },
       owner: "Ariel",
     });
 

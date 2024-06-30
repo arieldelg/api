@@ -5,6 +5,11 @@ export type SaveTracer = {
   complete: boolean;
   dateCreated: string;
   dateUpdated: string;
+  objectDay: {
+    year: number;
+    month: number;
+    day: number;
+  };
   owner: string;
 };
 

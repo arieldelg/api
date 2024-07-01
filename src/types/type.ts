@@ -11,6 +11,7 @@ export type SaveTracer = {
     day: number;
   };
   owner: string;
+  level: number;
 };
 
 export interface GetTracer extends SaveTracer {
@@ -24,6 +25,7 @@ export type Sort = {
 };
 
 export type TracerPost = {
+  level: number;
   title: string;
   priority: string;
   text: string;

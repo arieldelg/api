@@ -13,6 +13,9 @@ const allTracersByOwner = async () => {
         tracer: {
           $push: "$$ROOT",
         },
+        level: {
+          $first: "$level",
+        },
       },
     },
   ];

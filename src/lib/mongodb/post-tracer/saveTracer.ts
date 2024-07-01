@@ -29,6 +29,7 @@ const saveTracer = async (props: TracerPost) => {
         day: day,
       },
       owner: "Ariel",
+      level: props.level,
     });
 
     console.log(`A document was inserted baby with id ${data.insertedId}`);

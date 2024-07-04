@@ -3,6 +3,7 @@ import cors from "cors";
 import tracerRouter from "./routes/addTracer";
 import tracerById from "./routes/tracerById";
 import getAllTracer from "./routes/pageTracer";
+// import userAuth from "./routes";
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -19,6 +20,7 @@ app.get("/ariel", (_, res) => {
 app.use("/api/addTracer", tracerRouter);
 app.use("/api/tracerById", tracerById);
 app.use("/api/allTracers", getAllTracer);
+// app.use("/api/userAuth", userAuth);
 
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);

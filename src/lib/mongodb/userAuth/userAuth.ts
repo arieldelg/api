@@ -1,14 +1,10 @@
 import { client } from "../db";
 
-type Props = {
-  email: string;
-};
-
-const userAuth = async (props: Props) => {
+const userAuth = async (email: string) => {
   const arrg = [
     {
       $match: {
-        email: props.email,
+        email: email,
       },
     },
   ];
@@ -19,7 +15,7 @@ const userAuth = async (props: Props) => {
     const data = await collection.aggregate(arrg).toArray();
     return data;
   } finally {
-    await client.close();
+    // await client.close();
   }
 };
 

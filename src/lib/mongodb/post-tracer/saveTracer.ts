@@ -1,5 +1,6 @@
 import { client } from "../db";
 import { SaveTracer, TracerPost } from "../../../types/type";
+import { ObjectId } from "mongodb";
 
 const saveTracer = async (props: TracerPost) => {
   try {
@@ -28,13 +29,13 @@ const saveTracer = async (props: TracerPost) => {
         month: month,
         day: day,
       },
-      owner: "Ariel",
+      tracerUserId: new ObjectId(props.id),
       level: props.level,
     });
 
     console.log(`A document was inserted baby with id ${data.insertedId}`);
   } finally {
-    await client.close();
+    // await client.close();
   }
 };
 

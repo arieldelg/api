@@ -1,21 +1,11 @@
+import { ObjectId } from "mongodb";
 import { client } from "../db";
 
-const allTracersByOwner = async () => {
+const allTracersByOwner = async (id: string) => {
   const agg = [
     {
       $match: {
-        owner: "Ariel",
-      },
-    },
-    {
-      $group: {
-        _id: "$priority",
-        tracer: {
-          $push: "$$ROOT",
-        },
-        level: {
-          $first: "$level",
-        },
+        tracerUserId: new ObjectId(id),
       },
     },
   ];

@@ -1,3 +1,5 @@
+import { ObjectId } from "mongodb";
+
 export type SaveTracer = {
   title: string;
   priority: string;
@@ -10,7 +12,7 @@ export type SaveTracer = {
     month: number;
     day: number;
   };
-  owner: string;
+  tracerUserId: ObjectId;
   level: number;
 };
 
@@ -25,6 +27,7 @@ export type Sort = {
 };
 
 export type TracerPost = {
+  id: string;
   level: number;
   title: string;
   priority: string;

@@ -23,7 +23,7 @@ const tracerById = async (props: string) => {
     const data = await collection.aggregate(agg).toArray();
     return data;
   } finally {
-    await client.close();
+    // await client.close();
   }
 };
 
@@ -59,7 +59,7 @@ const updateTracerById = async (id: string, props: Props) => {
     const data = await collection.updateOne(filter, updateTracer);
     return data;
   } finally {
-    await client.close();
+    // await client.close();
   }
 };
 
@@ -73,7 +73,7 @@ const deleteTracerById = async (id: string) => {
     const data = await collection.deleteOne(filter);
     return data;
   } finally {
-    await client.close();
+    // await client.close();
   }
 };
 

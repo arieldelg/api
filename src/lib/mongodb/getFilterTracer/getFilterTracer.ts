@@ -39,19 +39,17 @@ const getFilterTracer = async (props: Props) => {
     ];
   }
 
-  try {
-    // ! conect to database and then collection
-    await client.connect();
-    const database = client.db("tracer-track");
-    const collection = database.collection("tracers");
+  await client.connect();
 
-    // ! execute query
-    const data = await collection.aggregate(agg).toArray();
+  // ! conect to database and then collection
+  const database = client.db("tracer-track");
+  const collection = database.collection("tracers");
 
-    return data;
-  } finally {
-    // await client.close();
-  }
+  // ! execute query
+  const data = await collection.aggregate(agg).toArray();
+
+  // await client.close();
+  return data;
 };
 
 export default getFilterTracer;
